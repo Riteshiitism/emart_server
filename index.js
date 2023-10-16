@@ -14,25 +14,25 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-// app.use(cors({
-//   origin: ["http://localhost:3000","https://cool-dolphin-debfaf.netlify.app/"],
-//   credentials: true
-// }));
-cors: {
-  origin: ["http://localhost:3000", "https://cool-dolphin-debfaf.netlify.app/"];
-}
+app.use(cors({
+  origin: ["http://localhost:3000","https://cool-dolphin-debfaf.netlify.app/"],
+  credentials: true
+}));
+// cors: {
+//   origin: ["http://localhost:3000", "https://cool-dolphin-debfaf.netlify.app/"];
+// }
 
-app.all("*", function (req, res, next) {
-  let origin = req.headers.origin;
-  if (cors.origin.indexOf(origin) >= 0) {
-    res.header("Access-Control-Allow-Origin", origin);
-  }
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+// app.all("*", function (req, res, next) {
+//   let origin = req.headers.origin;
+//   if (cors.origin.indexOf(origin) >= 0) {
+//     res.header("Access-Control-Allow-Origin", origin);
+//   }
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 var __filename = url.parse(process.cwd() + "/" + (process.argv[1] || ""));
 __filename = path.resolve(__filename.pathname);
